@@ -19,7 +19,8 @@ ai_helpdesk/
 ├── README.md
 ├── requirements.txt
 ├── .env.example
-├── main.py                 # Main application entry point
+├── main.py                 # Main application Orchestration
+├── app.py                  # Application entry point
 ├── config/
 │   ├── __init__.py
 │   └── settings.py         # Configuration management
@@ -89,8 +90,12 @@ ai_helpdesk/
 
 7. **Start the app**
    ```bash
-   Uvicorn
+   uvicorn app:app --host 0.0.0.0 --port 8000
    ```
+This will:
+1. Initialize the system
+2. Expose funcitonalitites via REST APIs
+3. Read Docs and rest API [Here](http://localhost:8000/docs#) 
 
 ## 📚 Request Categories
 
@@ -106,46 +111,38 @@ The system automatically classifies requests into these categories:
 
 ## 🚀 Usage
 
-### Basic Usage
-
-```python
-from main import HelpDeskSystem
-
-# Initialize the system
-system = HelpDeskSystem()
-system.initialize_sync()
-
-# Process a request
-response = system.process_request_sync(
-    "I forgot my password and can't log into my computer"
-)
-
-print(f"Category: {response.category.value}")
-print(f"Response: {response.response}")
-print(f"Escalate: {response.escalation.should_escalate}")
-```
-
-### Run the Demo
+### Single Request
 
 ```bash
-python main.py
+curl -X 'POST' \
+  'http://localhost:8000/process' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "request": " I have been logged out of my system and can'\''t login. What can I do?",
+  "user_id": "user_001"
+}'
 ```
 
-This will:
-1. Initialize the system
-2. Process sample requests
-3. Enter interactive mode for testing
+### Batch Request
 
-### Batch Processing
-
-```python
-requests = [
-    {"request": "I forgot my password", "user_id": "user1"},
-    {"request": "Need to install Office", "user_id": "user2"},
-    {"request": "Suspicious email received", "user_id": "user3"}
-]
-
-responses = system.batch_process_requests(requests)
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/process/batch' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "requests": [
+{
+  "request": "I think I have a phishing attack",
+  "user_id": "user_002"
+},
+{
+  "request": " I have been logged out of my system and can'\''t login. What can I do?",
+  "user_id": "user_001"
+}
+  ]
+}'
 ```
 
 ## 🧠 How It Works
@@ -162,9 +159,14 @@ responses = system.batch_process_requests(requests)
 The system uses LangGraph to manage the workflow state and coordinate between agents:
 
 ```
-Request → Classify → Retrieve Knowledge → Generate Response → Determine Escalation → End
-    ↓         ↓              ↓                    ↓                   ↓
-Error Handler (if any step fails)
+┌─────────┐     ┌────────────┐     ┌────────────────────┐     ┌────────────────────┐     ┌────────────────────┐     ┌──────┐
+│ Request │ ──▶ │ Classifier │ ──▶ │ Knowledge Retriever │ ──▶ │ Response Generator │ ──▶ │ Escalation Decision │ ──▶ │ End  │
+└─────────┘     └────────────┘     └────────────────────┘     └────────────────────┘     └────────────────────┘     └──────┘
+      │                  │                   │                          │                          │
+      ▼                  ▼                   ▼                          ▼                          ▼
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                            Error Handler (fallbacks, retries, logs)                    │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Knowledge Base Processing
@@ -240,7 +242,7 @@ pytest tests/test_integration.py -v
 
 ## 📈 Performance Considerations
 
-- **Processing Time**: Typical requests process in 2-5 seconds
+- **Processing Time**: Typical requests process in 10-15 seconds
 - **Knowledge Base Size**: Optimized for 100-10,000 documents
 - **Concurrent Requests**: Supports multiple simultaneous requests
 - **Memory Usage**: ~200-500MB depending on knowledge base size
@@ -253,16 +255,6 @@ pytest tests/test_integration.py -v
 2. Add examples in `config/settings.py`
 3. Update escalation rules if needed
 
-### Custom Response Templates
-
-Modify response generation in `src/agents/response_agent.py`:
-
-```python
-def _generate_custom_response(self, request, classification):
-    # Your custom response logic
-    pass
-```
-
 ### Knowledge Base Sources
 
 The system can process:
@@ -272,7 +264,6 @@ The system can process:
 - **Text files**: Simple documentation
 
 ## 🚨 Troubleshooting
-
 ### Common Issues
 
 1. **"No documents found"**: Check `data/knowledge_base/` directory
@@ -280,35 +271,10 @@ The system can process:
 3. **"Low response quality"**: Add more relevant documents to knowledge base
 4. **"Slow processing"**: Reduce knowledge base size or increase chunk size
 
-### Debug Mode
-
-Enable debug logging:
-
-```bash
-export LOG_LEVEL=DEBUG
-python main.py
-```
-
-### System Status
-
-Check system health:
-
-```python
-status = system.get_system_status()
-print(json.dumps(status, indent=2))
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Further Improvement
+1. Include a Database to persist requests and responses
+2. Include Docker & Dcoker Compose for Deployment and scalability
+3. Add Monitoring to See LLM Performance
 
 ## 🙏 Acknowledgments
 
@@ -317,13 +283,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [ChromaDB](https://github.com/chroma-core/chroma) for vector storage
 - [Google Gemini](https://ai.google.dev/) for language model capabilities
 
-## 📞 Support
 
-For questions and support:
-- Check the [documentation](docs/)
-- Review [common issues](TROUBLESHOOTING.md)
-- Open an [issue](issues/new)
-
----
-
-**Note**: This system is designed for internal IT support use cases. Ensure proper security measures and data privacy compliance when deploying in production environments.
+**Contact**: Chigozilai Kejeh ~ kebochig@gmail.com

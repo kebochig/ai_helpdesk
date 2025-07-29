@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Import system components
-from main import HelpDeskSystem
+from app import HelpDeskSystem
 from src.models.schemas import HelpDeskRequest, RequestCategory
 from config.settings import settings
 

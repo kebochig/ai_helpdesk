@@ -177,7 +177,7 @@ Instructions:
 3. Explain when each approach might be most appropriate
 4. Include any additional information requests if needed for clarification
 5. Maintain a helpful and professional tone
-6. If the knowledge base doesn't have complete information, say so honestly
+6. If sufficient knowledge isn't present, suggest based on general knowledge and inform user the request has been escalate for further support.
 7. Suggest escalation if the issue seems complex
 
 Generate a guided response:
