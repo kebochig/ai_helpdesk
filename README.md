@@ -18,7 +18,7 @@ A multi-agent AI help desk system built with LangChain and LangGraph that automa
 ai_helpdesk/
 ├── README.md
 ├── requirements.txt
-├── .env.example
+├── .env
 ├── main.py                 # Main application Orchestration
 ├── app.py                  # Application entry point
 ├── config/
