@@ -1,0 +1,69 @@
+{
+  "troubleshooting_steps": {
+    "password_reset": {
+      "category": "Authentication",
+      "steps": [
+        "Go to https://password.techcorp.com",
+        "Enter your company email address",
+        "Check email for reset link (check spam folder)",
+        "Click link and create new password following policy",
+        "Update password in all saved locations (browsers, mobile apps)",
+        "Test login on primary work applications"
+      ],
+      "escalation_trigger": "Multiple failed reset attempts or account lockout",
+      "escalation_contact": "security@techcorp.com"
+    },
+    "slow_computer": {
+      "category": "Performance",
+      "steps": [
+        "Check if Windows updates are running in background",
+        "Close unnecessary applications and browser tabs",
+        "Restart the computer to clear memory",
+        "Check available disk space (need >10% free)",
+        "Run Windows built-in disk cleanup tool",
+        "Check Task Manager for high CPU/memory usage processes"
+      ],
+      "escalation_trigger": "Performance issues persist after basic troubleshooting",
+      "escalation_contact": "hardware-support@techcorp.com"
+    },
+    "wifi_connection": {
+      "category": "Network",
+      "steps": [
+        "Check if WiFi is enabled on device",
+        "Forget and reconnect to TechCorp-WiFi network",
+        "Try connecting to TechCorp-Guest to test hardware",
+        "Restart network adapter in Device Manager",
+        "Update WiFi driver if available",
+        "Try ethernet connection to isolate WiFi issue"
+      ],
+      "escalation_trigger": "Unable to connect with any network or ethernet",
+      "escalation_contact": "network-support@techcorp.com"
+    },
+    "email_not_syncing": {
+      "category": "Email",
+      "steps": [
+        "Check internet connectivity",
+        "Verify Outlook is online (not in offline mode)",
+        "Send/Receive all folders manually",
+        "Check account settings for correct server configuration",
+        "Disable and re-enable the email account",
+        "Create new Outlook profile if issues persist"
+      ],
+      "escalation_trigger": "Email account configuration errors or server connectivity issues",
+      "escalation_contact": "email-support@techcorp.com"
+    },
+    "software_installation_failed": {
+      "category": "Software",
+      "steps": [
+        "Run installer as administrator",
+        "Temporarily disable antivirus during installation",
+        "Check if similar software is already installed (uninstall first)",
+        "Clear Windows temp files and restart",
+        "Download fresh installer file",
+        "Check system requirements match software needs"
+      ],
+      "escalation_trigger": "Installation fails due to system compatibility or requires admin privileges",
+      "escalation_contact": "software-support@techcorp.com"
+    }
+  }
+}

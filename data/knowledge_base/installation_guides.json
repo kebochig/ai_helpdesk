@@ -1,0 +1,70 @@
+{
+  "software_guides": {
+    "slack": {
+      "title": "Installing Slack Desktop App",
+      "steps": [
+        "Download Slack from https://slack.com/downloads",
+        "Run the installer with administrator privileges",
+        "Sign in with your @techcorp.com email address",
+        "Join the #general and #it-support channels",
+        "Enable desktop notifications for mentions",
+        "Set status to show your working hours"
+      ],
+      "common_issues": [
+        {
+          "issue": "Cannot sign in with company email",
+          "solution": "Check with IT - your account may not be provisioned yet"
+        },
+        {
+          "issue": "Notifications not working",
+          "solution": "Check Windows notification settings and Slack notification preferences"
+        }
+      ],
+      "support_contact": "it-support@techcorp.com"
+    },
+    "office365": {
+      "title": "Setting up Microsoft Office 365",
+      "steps": [
+        "Go to portal.office.com",
+        "Sign in with your company credentials (firstname.lastname@techcorp.com)",
+        "Download and install Office apps from the portal",
+        "Activate with your company license",
+        "Set up Outlook with company email",
+        "Connect OneDrive for file sync"
+      ],
+      "common_issues": [
+        {
+          "issue": "License activation failed",
+          "solution": "Ensure you're signed in with company account, not personal Microsoft account"
+        },
+        {
+          "issue": "Outlook not syncing emails",
+          "solution": "Check network connection and verify Exchange server settings"
+        }
+      ],
+      "support_contact": "it-support@techcorp.com"
+    },
+    "vpn": {
+      "title": "Installing Company VPN (Cisco AnyConnect)",
+      "steps": [
+        "Download Cisco AnyConnect from IT portal",
+        "Install with administrator rights",
+        "Enter server address: vpn.techcorp.com",
+        "Use your company username and password",
+        "Enable auto-connect for company networks",
+        "Test connection to internal resources"
+      ],
+      "common_issues": [
+        {
+          "issue": "Cannot connect to VPN server",
+          "solution": "Check internet connection and contact IT if server is down"
+        },
+        {
+          "issue": "VPN connects but cannot access internal sites",
+          "solution": "Try disconnecting and reconnecting, or contact IT for routing issues"
+        }
+      ],
+      "support_contact": "it-support@techcorp.com"
+    }
+  }
+}

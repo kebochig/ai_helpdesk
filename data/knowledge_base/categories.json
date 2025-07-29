@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "password_reset": {
+      "description": "Password-related issues including resets, lockouts, and policy questions",
+      "typical_resolution_time": "5-10 minutes",
+      "escalation_triggers": ["Multiple failed resets", "Account security concerns"]
+    },
+    "software_installation": {
+      "description": "Issues with installing, updating, or configuring software applications",
+      "typical_resolution_time": "10-30 minutes", 
+      "escalation_triggers": ["Unapproved software requests", "System compatibility issues"]
+    },
+    "hardware_failure": {
+      "description": "Physical hardware problems requiring repair or replacement",
+      "typical_resolution_time": "2-3 business days",
+      "escalation_triggers": ["All hardware failures require escalation"]
+    },
+    "network_connectivity": {
+      "description": "Network access issues including WiFi, VPN, and internet connectivity",
+      "typical_resolution_time": "15-45 minutes",
+      "escalation_triggers": ["Network infrastructure issues", "Multiple users affected"]
+    },
+    "email_configuration": {
+      "description": "Email setup, synchronization, and configuration issues",
+      "typical_resolution_time": "10-20 minutes",
+      "escalation_triggers": ["Server configuration changes", "Distribution list modifications"]
+    },
+    "security_incident": {
+      "description": "Potential security threats, malware, or suspicious activity",
+      "typical_resolution_time": "Immediate response",
+      "escalation_triggers": ["All security incidents require immediate escalation"]
+    },
+    "policy_question": {
+      "description": "Questions about company IT policies and procedures",
+      "typical_resolution_time": "5-15 minutes",
+      "escalation_triggers": ["Policy clarification needed", "Exception requests"]
+    }
+  }
+}

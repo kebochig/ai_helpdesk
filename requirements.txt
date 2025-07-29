@@ -1,0 +1,37 @@
+# Core LangChain and LangGraph
+langchain 
+langchain-community 
+langchain-core 
+langgraph 
+langchain-google-genai 
+
+# Vector Store and Embeddings
+chromadb==0.4.22
+sentence-transformers==2.2.2
+
+# Google Gemini API
+google-generativeai 
+
+# api 
+fastapi 
+uvicorn 
+
+# Document Processing
+pypdf==3.17.4
+python-docx==1.1.0
+markdown==3.5.2
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.3
+typing-extensions==4.9.0
+
+# Development and Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+black==23.12.1
+flake8==7.0.0
+
+# Optional: For enhanced document processing
+beautifulsoup4==4.12.2
+lxml==5.1.0
