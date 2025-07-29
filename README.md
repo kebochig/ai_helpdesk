@@ -80,6 +80,35 @@ ai_helpdesk/
    # Edit .env with your Google API key and other settings
    ```
 
+   or create the .env file with the following parameter
+
+   ```bash
+        # Google API Configuration
+        GOOGLE_API_KEY=your_google_api_key_here
+
+        # Environment Settings
+        ENVIRONMENT=development
+        DEBUG=true
+        LOG_LEVEL=INFO
+
+        # LLM Configuration
+        GEMINI_MODEL=gemini-1.5-flash
+        LLM_TEMPERATURE=0.1
+        MAX_TOKENS=2000
+
+        # Vector Store Configuration
+        VECTOR_STORE_PATH=./data/vector_store
+        EMBEDDING_MODEL=models/embedding-001
+
+        # Knowledge Base Configuration
+        KNOWLEDGE_BASE_PATH=./data/knowledge_base
+
+        # System Thresholds
+        ESCALATION_THRESHOLD=0.7
+        MIN_CONFIDENCE_THRESHOLD=0.5
+   ```
+
+
 5. **Set up directory structure**
    ```bash
    mkdir -p data/knowledge_base/{faqs,procedures,policies}

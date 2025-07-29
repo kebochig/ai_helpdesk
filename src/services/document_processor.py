@@ -83,7 +83,6 @@ class DocumentProcessor:
                             continue
             
             logger.info(f"Loaded {len(documents)} documents from knowledge base")
-            logger.info(documents)
             return documents
             
         except Exception as e:
