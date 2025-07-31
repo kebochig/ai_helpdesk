@@ -217,9 +217,9 @@ async def refresh_knowledge_base(
     Refresh the knowledge base with updated documents.
     This operation runs in the background to avoid timeout issues.
     """
-    async def refresh_task():
+    def refresh_task():
         try:
-            success = await system.refresh_knowledge_base()
+            success = system.refresh_knowledge_base()
             if success:
                 logger.info("Knowledge base refresh completed successfully")
             else:

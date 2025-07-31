@@ -392,7 +392,7 @@ class HelpDeskWorkflow:
             Dictionary with workflow metrics
         """
         try:
-            # In a production system, this would query actual workflow execution data
+            # TODO: Implement Redis DB to persist and retrieve states
             return {
                 "total_requests_processed": 0,
                 "avg_processing_time": 0.0,

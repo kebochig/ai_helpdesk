@@ -372,30 +372,6 @@ def main():
     status = system.get_system_status()
     print(f"\nKnowledge Base: {status['knowledge_base']['document_count']} documents loaded")
     
-    # Process sample requests
-    # print("\n=== Processing Sample Requests ===")
-    # sample_requests = create_sample_requests()
-    
-    # for i, request_data in enumerate(sample_requests, 1):
-    #     print(f"\n--- Request {i} ---")
-    #     print(f"User: {request_data['request']}")
-        
-    #     try:
-    #         response = system.process_request_sync(
-    #             request_text=request_data['request'],
-    #             user_id=request_data['user_id']
-    #         )
-            
-    #         print(f"Category: {response.category.value}")
-    #         print(f"Confidence: {response.confidence:.2f}")
-    #         print(f"Response: {response.response[:200]}...")
-    #         print(f"Escalation: {'Yes' if response.escalation.should_escalate else 'No'}")
-    #         print(f"Priority: {response.escalation.priority.value}")
-    #         print(f"Processing Time: {response.processing_time:.2f}s")
-            
-    #     except Exception as e:
-    #         print(f"Error processing request: {str(e)}")
-    
     # Interactive mode
     print("\n=== Interactive Mode ===")
     print("Enter help desk requests (type 'quit' to exit):")
